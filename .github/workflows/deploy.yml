@@ -2,7 +2,7 @@ name: Deploy
 
 on:
   push:
-    branches: [feature]
+    branches: [main]
 
 jobs:
   build:
@@ -22,9 +22,9 @@ jobs:
         with:
           source-directory: 'output'
           destination-github-username: 'kimdohoon2'
-          destination-repository-name: 'coworkers'
+          destination-repository-name: 'lastcoworkers'
           user-email: ${{ secrets.EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
-          target-branch: feature
+          target-branch: main
       - name: Test get variable exported by push-to-another-repository
         run: echo $DESTINATION_CLONED_DIRECTORY
