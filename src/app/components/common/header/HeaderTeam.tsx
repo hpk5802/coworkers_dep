@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import getUser, { GetUserResponse } from '@/app/lib/user/getUser';
 import TeamHeaderDropdown from './TeamHeaderDropdown';
 import TeamSidebar from './TeamSidebar';
+import Link from 'next/link';
 
 interface HeaderTeamProps {
   type: 'sidebar' | 'header';
@@ -32,9 +33,12 @@ export default function HeaderTeam({ type, onClick }: HeaderTeamProps) {
 
   if (!userData || userData.memberships.length === 0) {
     return (
-      <button className="inline-block rounded text-white hover:text-interaction-hover">
+      <Link
+        href="/addteam"
+        className="inline-block rounded text-white hover:text-interaction-hover"
+      >
         팀 생성하기
-      </button>
+      </Link>
     );
   }
 
