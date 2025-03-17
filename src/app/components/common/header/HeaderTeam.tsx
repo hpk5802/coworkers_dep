@@ -3,9 +3,9 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import getUser, { GetUserResponse } from '@/app/lib/user/getUser';
+import Link from 'next/link';
 import TeamHeaderDropdown from './TeamHeaderDropdown';
 import TeamSidebar from './TeamSidebar';
-import Link from 'next/link';
 
 interface HeaderTeamProps {
   type: 'sidebar' | 'header';
