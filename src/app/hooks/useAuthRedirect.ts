@@ -8,18 +8,23 @@ const useAuthRedirect = () => {
   const router = useRouter();
   const { accessToken } = useSelector((state: RootState) => state.auth);
   const [isLoading, setIsLoading] = useState(true);
+  const [isToastShown, setIsToastShown] = useState(false);
   const { showToast } = useToast();
 
   useEffect(() => {
     if (!accessToken) {
-      showToast({ message: '로그인 후 이용할 수 있습니다.🧐', type: 'info' });
+      if (!isToastShown) {
+        showToast({ message: '로그인 후 이용할 수 있습니다.🧐', type: 'info' });
+        setIsToastShown(true);
+      }
       setTimeout(() => {
         router.replace('/login');
       }, 300);
     } else {
       setIsLoading(false);
+      setIsToastShown(false);
     }
-  }, [accessToken, router, showToast]);
+  }, [accessToken, router, showToast, isToastShown]);
 
   return { isLoading };
 };
