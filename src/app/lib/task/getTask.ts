@@ -24,9 +24,6 @@ export const getTasks = async ({
     `/groups/${groupId}/task-lists/${taskListId}/tasks`,
     {
       params: { date },
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
-      },
     },
   );
 
@@ -52,11 +49,6 @@ export const getTask = async ({
 }: GetTaskDetailRequest): Promise<Task> => {
   const res = await instance.get<Task>(
     `/groups/${groupId}/task-lists/${taskListId}/tasks/${taskId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
-      },
-    },
   );
 
   return res.data;

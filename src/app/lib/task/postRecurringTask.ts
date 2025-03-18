@@ -18,11 +18,6 @@ export const createRecurringTask = async ({
   const res = await instance.post(
     `/groups/${groupId}/task-lists/${taskListId}/recurring`,
     data,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_ACCESS_TOKEN}`,
-      },
-    },
   );
   return res.data;
 };
